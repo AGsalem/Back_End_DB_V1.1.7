@@ -5,7 +5,7 @@ export default fp(async (fastify) => {
 
     await fastify.register(import("@fastify/rate-limit"), {
         max: 20,
-        ban: 5,
+        ban: 10,
         hook: "preHandler",
         timeWindow: 5 * 60 * 1000,
 
@@ -30,6 +30,7 @@ export default fp(async (fastify) => {
 
         return crypto.createHash("sha256").update(raw).digest("hex");
     }
+    console.log(fingerprint)
 
     fastify.setNotFoundHandler({
         preHandler: fastify.rateLimit(),

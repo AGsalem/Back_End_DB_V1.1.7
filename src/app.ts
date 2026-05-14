@@ -27,7 +27,11 @@ const app: FastifyPluginAsync<AppOptions> = async (
   // define your routes in one of these
   // eslint-disable-next-line no-void
   void fastify.register(AutoLoad, {
-    dir: join(__dirname, 'routes'),
+    dir: join(__dirname, 'routes','post'),
+    options: opts
+  })
+  void fastify.register(AutoLoad, {
+    dir: join(__dirname, 'routes','users'),
     options: opts
   })
   
